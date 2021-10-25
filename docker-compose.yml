@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  web:
+    # Берем Dockerfile из каталога app
+    build: ./src
+    # Запускаем тестовый сервер
+    command: python manage.py runserver 0.0.0.0:8000
+    # Куда будут помещены данные из каталога src
+    volumes:
+      - ./src/:/opt/here-point
+    #Открываем порт 8000 внутри и снаружи
+    ports:
+      - 8000:8000
+    # Файл содержащий переменные для контейнера
+    env_file:
+      - ./.env
+  db:
+    image: postgres:12.0-alpine
+    # Внешний том(volume) и место где он будет подключен внутри контейнера,
+    # без него перезапуск контейнера будет удалять бд и данные
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+volumes:
+  postgres_volume:
