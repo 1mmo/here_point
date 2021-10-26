@@ -28,7 +28,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # My apps
     'main.apps.MainConfig',
+    'users.apps.UsersConfig',
+    'bootstrap5',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -76,7 +79,10 @@ DATABASES = {
 }
 
 # Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+
+
+AUTH_USER_MODEL = 'users.AdvUser'
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -112,6 +118,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
