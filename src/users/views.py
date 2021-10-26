@@ -1,7 +1,13 @@
 from django.shortcuts import render
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
+
+class HerePointLogoutView(LoginRequiredMixin, LogoutView):
+    """ Controller-class doing the logout"""
+    template_name = 'users/logout.html'
+    
 
 class HerePointLoginView(LoginView):
     """ Controller-class doing the login """
