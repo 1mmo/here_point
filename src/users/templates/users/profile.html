@@ -12,9 +12,11 @@
 		<img class="my-4" src="{% static 'images/logo.jpg' %}" width="150" height="70" alt="" style="border-radius: 100px">
             <span class="fs-2 ">Logo</span>
         </a>
+	<button type="button" class="btn btn-outline-secondary float-end me-5 mt-5 btn-lg "><a href="{% url 'users:register' %}">Регистрация</a></button>
         <button type="button" class="btn btn-outline-secondary float-end me-5 mt-5 btn-lg ">Добавить своё место</button>
-	<span class="fs-2 float-end mt-5 me-5">{{ user.username }}</span>
-	<img class="float-end me-2 mt-3" src="{% static 'images/avatar.jpg' %}" width="100" height="100" alt="" style="border-radius: 50%;">
+	<span class="fs-2 float-end mt-5 me-4"><a href="{% url 'users:profile' %}">{{ user.username }}</a></span>
+	<img class="float-end me-2 mt-5" src="{% static 'images/avatar.jpg' %}" width="57" height="57" alt="" style="border-radius: 50%;">
+
     </nav>
 
     <div class="row mt-5"></div>
@@ -34,39 +36,39 @@
 		    <img class="" src="{% static 'images/avatar.jpg' %}" width="270" height="270" alt="" style="border-radius: 50%;">
             </div>
             <div class="row">
-                <button type="button" class="btn btn-outline-secondary mt-5 btn-lg ">Редактировать профиль</button>
+		    <button type="button" class="btn btn-outline-secondary mt-5 btn-lg "><a href="{% url 'users:profile_change' %}">Редактировать профиль</a></button>
 		<button type-"button" class="btn btn-outline-secondary mt-3 btn-lg "><a href="{% url 'users:logout' %}">Выйти</a></button>
             </div>
         </div>
         <div class="col-5">
             <div class="row">
-                <label for="Email" class="col-sm-4 col-form-label fs-3">Email:</label>
+		    <label for="Email" class="col-sm-4 col-form-label fs-3">Email:</label>
                 <div class="col-sm-8">
-                    <input type="text" readonly class="form-control-plaintext fs-3" id="Email" value="email@example.com">
+			<input type="text" readonly class="form-control-plaintext fs-3" id="Email" value="{{ user.email }}">
                 </div>
             </div>
             <div class="row">
                 <label for="Password" class="col-sm-4 col-form-label fs-3">Password:</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control-plaintext fs-3" id="Password" value="password_example">
+			<input type="text" class="form-control-plaintext fs-3" id="Password" value="********">
                 </div>
             </div>
             <div class="row">
                 <label for="Name" class="col-sm-4 col-form-label fs-3">Name:</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control-plaintext fs-3" id="Name" value="Name_example">
+			<input type="text" readonly class="form-control-plaintext fs-3" id="Name" value="{{ user.first_name }}">
                 </div>
             </div>
             <div class="row">
                 <label for="Surname" class="col-sm-4 col-form-label fs-3">Surname:</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control-plaintext fs-3" id="Surname" value="Surname_example">
+			<input type="text" readonly class="form-control-plaintext fs-3" id="Surname" value="{{ user.last_name }}">
                 </div>
             </div>
             <div class="row">
                 <label for="City" class="col-sm-4 col-form-label fs-3">City:</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control-plaintext fs-3" id="City" value="City_example">
+                    <input type="text" readonly class="form-control-plaintext fs-3" id="City" value="City">
                 </div>
             </div>
         </div>
