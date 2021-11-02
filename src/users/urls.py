@@ -1,6 +1,8 @@
 from django.urls import path
 
-from .views import HerePointLoginView, HerePointLogoutView, ChangeUserInfoView, RegisterDoneView, RegisterUserView
+from .views import (HerePointLoginView, HerePointLogoutView, 
+                    ChangeUserInfoView, RegisterDoneView, 
+                    RegisterUserView)
 from .views import index, profile
 
 
