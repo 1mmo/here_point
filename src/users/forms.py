@@ -53,3 +53,8 @@ class RegisterUserForm(forms.ModelForm):
         fields = {'username', 'email', 'password1', 'password2',
                   'first_name', 'last_name', 'send_messages'}
 
+"""
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+"""

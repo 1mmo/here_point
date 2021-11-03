@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     # My apps
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
-    'bootstrap5',
 ]
 
 
