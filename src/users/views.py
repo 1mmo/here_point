@@ -42,8 +42,9 @@ class RegisterDoneView(TemplateView):
 
 class HerePointLogoutView(LoginRequiredMixin, LogoutView):
     """ Controller-class doing the logout"""
-    template_name = 'users/logour.html'
-    
+    template_name = 'users/logout.html'
+    next_page = 'main:index'
+
 
 class HerePointLoginView(LoginView):
     """ Controller-class doing the login """

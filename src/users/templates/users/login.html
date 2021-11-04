@@ -9,9 +9,9 @@
 	{% csrf_token %}
 	<div class="form-group">
 		<label for="text">Имя</label>
-		<input type='text' class="form-control" id="text" placeholder="Введите имя">	
+		<input name="username" type='text' class="form-control" id="text" placeholder="Введите имя">	
 		<label for="pass">Пароль</label>
-		<input type="password" class="form-control" id="pass" placeholder="Введите пароль">
+		<input name="password" type="password" class="form-control" id="pass" placeholder="Введите пароль">
 	</div>
 	<input type="hidden" name="next" value="{{ next }}">
 	<input type="submit" value="Войти">
