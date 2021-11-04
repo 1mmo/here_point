@@ -1,14 +1,20 @@
 {% extends "layout/basic.html" %}
-{% load bootstrap5 %}
 
 {% block content %}
 <h3 class="text-center mb-4">Вход</h3>
-<form action="" method="post">
+{% if user.authenticated %}
+<h3 class="text-center mb-4">Вы уже выполнили вход</h3>
+{% else %}
+<form method="post">
 	{% csrf_token %}
 	<div class="form-group">
-		{% bootstrap_form form layout='horizontal' %}
-		<input type='hidden' name='next' value=''{{ next }}''>
-		{% buttons submit='Войти' %}{% endbuttons %}
-        </div>
+		<label for="text">Имя</label>
+		<input name="username" type='text' class="form-control" id="text" placeholder="Введите имя">	
+		<label for="pass">Пароль</label>
+		<input name="password" type="password" class="form-control" id="pass" placeholder="Введите пароль">
+	</div>
+	<input type="hidden" name="next" value="{{ next }}">
+	<input type="submit" value="Войти">
 </form>
+{% endif %}
 {% endblock %}

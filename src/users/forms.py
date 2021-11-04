@@ -6,6 +6,7 @@ from .models import AdvUser
 
 
 class ChangeUserInfoForm(forms.ModelForm):
+    """ Form for change main info about user """
     email = forms.EmailField(required=True, label='Адрес электронной почты')
 
 
@@ -52,4 +53,3 @@ class RegisterUserForm(forms.ModelForm):
         model = AdvUser
         fields = {'username', 'email', 'password1', 'password2',
                   'first_name', 'last_name', 'send_messages'}
-
