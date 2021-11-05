@@ -3,7 +3,7 @@ from django.urls import path
 
 from .views import (HerePointLoginView, HerePointLogoutView, 
                     ChangeUserInfoView, RegisterDoneView, 
-                    RegisterUserView)
+                    RegisterUserView, HerePointPasswordChangeView)
 from .views import index, profile
 
 
@@ -15,4 +15,7 @@ urlpatterns = [
     path('login/', HerePointLoginView.as_view(), name='login'),
     path('logout/', HerePointLogoutView.as_view(), name='logout'),
     path('profile/change/', ChangeUserInfoView.as_view(), name='profile_change'),
+    path('profile/password/change/', 
+         HerePointPasswordChangeView.as_view(),
+         name='password_change'),
 ]

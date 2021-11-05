@@ -8,11 +8,13 @@ from .models import AdvUser
 class ChangeUserInfoForm(forms.ModelForm):
     """ Form for change main info about user """
     email = forms.EmailField(required=True, label='Адрес электронной почты')
-
-
+    username = forms.CharField(max_length=15, required=True, label='Никнейм')
+    first_name = forms.CharField(max_length=15, required=True, label='Имя')
+    last_name = forms.CharField(max_length=15, required=True, label='Фамилия')
+    
     class Meta:
         model = AdvUser
-        fields = ('username', 'email', 'first_name', 
+        fields = ('email', 'username', 'first_name', 
                   'last_name', 'send_messages')
 
 
