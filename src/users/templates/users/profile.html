@@ -47,7 +47,7 @@
     <div class="row mt-5">
         <div class="col-1"></div>
         <div class="col-7">
-            <span class="fs-2 "><strong>Данные пользователя</strong></span>
+		<span class="fs-2 "><strong>Данные пользователя</strong></span>
         </div>
         <div class="col ">
             <span class="fs-2 "><strong>Добавленные места</strong></span>
@@ -73,9 +73,15 @@
             <div class="row">
                 <label for="Password" class="col-sm-4 col-form-label fs-3">Password:</label>
                 <div class="col-sm-8">
-			<input type="text" class="form-control-plaintext fs-3" id="Password" value="********">
+			<input type="password" class="form-control-plaintext fs-3" id="Password" value="{{ user.password }}">
                 </div>
             </div>
+	    <div class="row">
+		<label for="Username" class="col-sm-4 col-form-label fs-3">Username:</label>
+		<div class="col-sm-8">
+			<input type="text" readonly class="form-control-plaintext fs-3" id="Username" value="{{ user.username }}">
+		</div>
+	    </div>
             <div class="row">
                 <label for="Name" class="col-sm-4 col-form-label fs-3">Name:</label>
                 <div class="col-sm-8">

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView, CreateView
@@ -12,7 +12,7 @@ from .forms import ChangeUserInfoForm, RegisterUserForm
 
 
 class ChangeUserInfoView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
-    """Controller-class change UserInfo"""
+    """ Controller-class change UserInfo """
     model = AdvUser
     template_name = 'users/change_user_info.html'
     form_class = ChangeUserInfoForm
@@ -39,6 +39,14 @@ class RegisterUserView(CreateView):
 class RegisterDoneView(TemplateView):
     template_name = 'users/register_done.html'
 
+
+class HerePointPasswordChangeView(
+                SuccessMessageMixin, 
+                LoginRequiredMixin,
+                PasswordChangeView):
+    """ Controller-class change user's password """
+    template_name = 'users/password_change.html'
+    success_url = reverse_lazy("users:profile")
 
 class HerePointLogoutView(LoginRequiredMixin, LogoutView):
     """ Controller-class doing the logout"""
