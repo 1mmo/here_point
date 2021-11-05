@@ -30,6 +30,7 @@
         }
 	#other_button {
 		width: 200px;
+		margin: 0px 0px 0px 345px;
 	}
     </style>
 
@@ -82,6 +83,10 @@
                                 <div class="col-sm-8">
                                         <input name='last_name' type='text' class='form-control-plaintext fs-3' id='text_last_name' value="{{ user.last_name }}">
 				</div>
+				<label for="pass" class="col-sm-4 col-form-label fs-3">Password:</label>
+                                <div class="col-sm-8">
+                                        <input name='pass' type='password' onlyread class='form-control-plaintext fs-3' id='pass' value="{{ user.password }}">
+                                </div>
 				<button onclick="document.location='{% url 'users:password_change' %}'" type="button" class="btn btn-outline-secondary mt-5 btn-lg" id="other_button">Изменить пароль</button>
 			</div>
 		</div>
