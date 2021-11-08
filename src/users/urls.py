@@ -3,12 +3,14 @@ from django.urls import path
 
 from .views import (HerePointLoginView, HerePointLogoutView, 
                     ChangeUserInfoView, RegisterDoneView, 
-                    RegisterUserView, HerePointPasswordChangeView)
-from .views import index, profile
+                    RegisterUserView, HerePointPasswordChangeView,
+                    DeleteUserView)
+from .views import profile
 
 
 app_name = 'users'
 urlpatterns = [
+    path('profile/delete/', DeleteUserView.as_view(), name='profile_delete'),
     path('register/done/', RegisterDoneView.as_view(), name='register_done'),
     path('register/', RegisterUserView.as_view (), name='register'),
     path('profile/', profile, name='profile'),
