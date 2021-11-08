@@ -28,14 +28,29 @@
                 left: 0;
                 z-index: 1;
         }
-	#change_pass {
-		width: 300px;
-		margin: 0px 0px 0px 345px;
+
+	#delete {
+		width: 200px;
+		height: 50px;
+		margin: 300px 20px 300px 185px;
+		position: relative;
 	}
 
-	#delete_profile {
-		width: 300px;
-		margin: 0px 0px 0px 345px;
+	#cancel {
+		width: 200px;
+		height: 50px;
+		margin: 300px 185px 300px 20px;
+		position: relative;
+	}
+
+	.col-5 {
+		display: flex;
+	}
+
+	#delete_question {
+		text-align: center;
+		font-weight: 200;
+		
 	}
     </style>
 
@@ -59,7 +74,6 @@
         </div>
     </div>
     <form method='post'>
-    {% csrf_token %}
     <div class="row mt-5 " style="height: auto;">
         <div class="col-1" style="word-break: break-all;"></div>
         <div class="col-2">
@@ -70,31 +84,12 @@
             </div>
 	</div>
 	<form method="post">
+		{% csrf_token %}
 		<div class="col-5">
 			<div class="row">
-				<label for="email" class="col-sm-4 col-form-label fs-3">Email:</label>
-			    	<div class="col-sm-8">
-                        		<input name="email" type="email" class="form-control-plaintext fs-3" id="email" value="{{ user.email }}">
-                	    	</div>
-				<label for="text_username" class="col-sm-4 col-form-label fs-3">Username:</label>
-				<div class="col-sm-8">
-					<input name='username' type='text' class='form-control-plaintext fs-3' id='text_username' value="{{ user.username }}">
-				</div>				
-				<label for="text_first_name" class="col-sm-4 col-form-label fs-3">Name:</label>
-                                <div class="col-sm-8">
-                                        <input name='first_name' type='text' class='form-control-plaintext fs-3' id='text_first_name' value="{{ user.first_name }}">
-				</div>
-				<label for="text_last_name" class="col-sm-4 col-form-label fs-3">Surname:</label>
-                                <div class="col-sm-8">
-                                        <input name='last_name' type='text' class='form-control-plaintext fs-3' id='text_last_name' value="{{ user.last_name }}">
-				</div>
-				<label for="pass" class="col-sm-4 col-form-label fs-3">Password:</label>
-                                <div class="col-sm-8">
-                                        <input name='pass' type='password' onlyread class='form-control-plaintext fs-3' id='pass' value="{{ user.password }}">
-                                </div>
-				<button onclick="document.location='{% url 'users:password_change' %}'" type="button" class="btn btn-outline-secondary mt-5 btn-lg" id="change_pass">Изменить пароль</button>
-				<button onclick="document.location='{% url 'users:profile_delete' %}'" type="button" class="btn btn-outline-secondary mt-4 btn-lg" id="delete_profile">Удалить аккаунт</button>
-
+				<h2 id="delete_question">Вы уверены, что хотите удалить аккаунт?</h2>
+				<input type="submit" class="btn btn-outline-secondary mt-4 btn-lg" id="delete" value="Удалить">
+				<button onclick="document.location='{% url 'users:profile_change' %}'" type="button" class="btn btn-outline-secondary mt-4 btn-lg" id="cancel">Отмена</button>
 			</div>
 		</div>
 	</form>
