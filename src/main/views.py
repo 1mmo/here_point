@@ -3,4 +3,4 @@ from django.contrib.auth.views import LoginView
 
 
 def index(request):
-    return render(request, 'main/index.html')
+    return render(request, 'primary_main.html')
