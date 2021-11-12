@@ -1,0 +1,328 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>main</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat:wght@100&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+        #logo {
+            text-decoration:none;
+            color: #2b2a2c;
+            font-size: 30px;
+            font-family: 'Cinzel', serif;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+	
+    </style>
+</head>
+<body class="bg">
+    <!-- Шапка -->
+    <nav class="navbar navbar-expand-md navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="margin: 8px;" href="#" id="logo">HerePoint</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto" style="align-items: center">
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link">Войти</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link">Регистрация</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link text-center">Добавить место</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <hr style="margin-top: 0">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Фильтры -->
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
+                <div class="container filters rounded-bd">
+                    <button class="btn btn-default btn-block shadow-none" type="button" id="buttonCollapse" 
+                            data-toggle="collapse" data-target="#filterCollapse" aria-controls="filterCollapse" 
+                            aria-expanded="true">
+                        <span class="find-place"><b>Фильтр</b></span>
+                    </button>
+                    <div class="collapse show" id="filterCollapse">
+                        <div class="container" style="padding: 10px;">
+                            <form role="form" class="form-horizontal">
+                                <div class="form-group label">
+                                    <!-- Город -->
+                                    <label for="select">Город</label>
+                                    <select class="form-control" name="city" id="city" style="font-size: 14px;">
+                                        <option>-не выбрано-</option>
+                                        <option>Нижний Новгород</option>
+                                    </select>
+                                    <!-- Район -->
+                                    <label for="select">Район</label>
+                                    <select class="form-control" name="city" id="city" style="font-size: 14px;">
+                                        <option>-не выбрано-</option>
+                                    </select>
+                                    <!-- Категория -->
+                                    <label for="select">Категория</label>
+                                    <select class="form-control" name="city" id="city" style="font-size: 14px;">
+                                        <option>-не выбрано-</option>
+                                        <option>Кафе</option>
+                                        <option>Отдых</option>
+                                        <option>Парки</option>
+                                        <option>Спорт</option>
+                                        <option>Бары</option>
+                                        <option>Музеи</option>
+                                        <option>Театры</option>
+                                        <option>Кинотеатры</option>
+                                        <option>Магазины</option>
+                                    </select>
+                                    <!-- Сортировать по -->
+                                    <label for="select">Сортировать</label>
+                                    <select class="form-control" name="city" id="city" style="font-size: 14px;">
+                                        <option>По рейтингу</option>
+                                        <option>По названию</option>
+                                        <option>По числу рекомендаций</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Основной блок -->
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 main-block rounded-bd">
+                <!-- Места -->
+                <div class="container" style="margin-top: 1em">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <div class="container rounded-bd places">
+                                <!-- Ссылка на место -->
+                                <a href="#" class="text-decoration-none">
+                                    <div class="row" style="align-items: center;">
+                                        <div class="col-xs-4 col-sm-4 col-md-5 col-lg-5 col-xl-5">
+                                            <img class="img rounded" src="{% static 'img/place.jpg' %}">
+                                        </div>
+                                        <div class="col-xs-8 col-sm-8 col-md-7 col-lg-7 col-xl-7">
+                                            <p>Название</p>
+                                            <hr>
+                                            <p>Адрес</p>
+                                            <hr>
+                                            <p>Рейтинг: <span style="font-size:20px">4.7</span>/5</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <div class="container rounded-bd places">
+                                <!-- Ссылка на место -->
+                                <a href="#" class="text-decoration-none">
+                                    <div class="row" style="align-items: center;">
+                                        <div class="col-xs-4 col-sm-4 col-md-5 col-lg-5 col-xl-5">
+                                            <img class="img rounded" src="{% static 'img/place.jpg' %}">
+                                        </div>
+                                        <div class="col-xs-8 col-sm-8 col-md-7 col-lg-7 col-xl-7">
+                                            <p>Название</p>
+                                            <hr>
+                                            <p>Адрес</p>
+                                            <hr>
+                                            <p>Рейтинг: <span style="font-size:20px">4.4</span>/5</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <div class="container rounded-bd places">
+                                <!-- Ссылка на место -->
+                                <a href="#" class="text-decoration-none">
+                                    <div class="row" style="align-items: center">
+                                        <div class="col-xs-4 col-sm-4 col-md-5 col-lg-5 col-xl-5">
+                                            <img class="img rounded" src="{% static 'img/place.jpg' %}">
+                                        </div>
+                                        <div class="col-xs-8 col-sm-8 col-md-7 col-lg-7 col-xl-7">
+                                            <p>Название</p>
+                                            <hr>
+                                            <p>Адрес</p>
+                                            <hr>
+                                            <p>Рейтинг: <span style="font-size:20px">4.2</span>/5</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <div class="container rounded-bd places">
+                                <!-- Ссылка на место -->
+                                <a href="#" class="text-decoration-none">
+                                    <div class="row" style="align-items: center">
+                                        <div class="col-xs-4 col-sm-4 col-md-5 col-lg-5 col-xl-5">
+                                            <img class="img rounded" src="{% static 'img/place.jpg' %}">
+                                        </div>
+                                        <div class="col-xs-8 col-sm-8 col-md-7 col-lg-7 col-xl-7">
+                                            <p>Название</p>
+                                            <hr>
+                                            <p>Адрес</p>
+                                            <hr>
+                                            <p>Рейтинг: <span style="font-size:20px">4.1</span>/5</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <div class="container rounded-bd places">
+                                <!-- Ссылка на место -->
+                                <a href="#" class="text-decoration-none">
+                                    <div class="row" style="align-items: center;">
+                                        <div class="col-xs-4 col-sm-4 col-md-5 col-lg-5 col-xl-5">
+                                            <img class="img rounded" src="{% static 'img/place.jpg' %}">
+                                        </div>
+                                        <div class="col-xs-8 col-sm-8 col-md-7 col-lg-7 col-xl-7">
+                                            <p>Название</p>
+                                            <hr>
+                                            <p>Адрес</p>
+                                            <hr>
+                                            <p>Рейтинг: <span style="font-size:20px">4.0</span>/5</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <div class="container rounded-bd places">
+                                <!-- Ссылка на место -->
+                                <a href="#" class="text-decoration-none">
+                                    <div class="row" style="align-items: center;">
+                                        <div class="col-xs-4 col-sm-4 col-md-5 col-lg-5 col-xl-5">
+                                            <img class="img rounded" src="{% static 'img/place.jpg' %}">
+                                        </div>
+                                        <div class="col-xs-8 col-sm-8 col-md-7 col-lg-7 col-xl-7">
+                                            <p>Название</p>
+                                            <hr>
+                                            <p>Адрес</p>
+                                            <hr>
+                                            <p>Рейтинг: <span style="font-size:20px">3.6</span>/5</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <div class="container rounded-bd places">
+                                <!-- Ссылка на место -->
+                                <a href="#" class="text-decoration-none">
+                                    <div class="row" style="align-items: center;">
+                                        <div class="col-xs-4 col-sm-4 col-md-5 col-lg-5 col-xl-5">
+                                            <img class="img rounded" src="{% static 'img/place.jpg' %}">
+                                        </div>
+                                        <div class="col-xs-8 col-sm-8 col-md-7 col-lg-7 col-xl-7">
+                                            <p>Название</p>
+                                            <hr>
+                                            <p>Адрес</p>
+                                            <hr>
+                                            <p>Рейтинг: <span style="font-size:20px">3.5</span>/5</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <div class="container rounded-bd places">
+                                <!-- Ссылка на место -->
+                                <a href="#" class="text-decoration-none">
+                                    <div class="row" style="align-items: center;">
+                                        <div class="col-xs-4 col-sm-4 col-md-5 col-lg-5 col-xl-5">
+                                            <img class="img rounded" src="{% static 'img/place.jpg' %}">
+                                        </div>
+                                        <div class="col-xs-8 col-sm-8 col-md-7 col-lg-7 col-xl-7">
+                                            <p>Название</p>
+                                            <hr>
+                                            <p>Адрес</p>
+                                            <hr>
+                                            <p>Рейтинг: <span style="font-size:20px">3.0</span>/5</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <div class="container rounded-bd places">
+                                <!-- Ссылка на место -->
+                                <a href="#" class="text-decoration-none">
+                                    <div class="row" style="align-items: center;">
+                                        <div class="col-xs-4 col-sm-4 col-md-5 col-lg-5 col-xl-5">
+                                            <img class="img rounded" src="{% static 'img/place.jpg' %}">
+                                        </div>
+                                        <div class="col-xs-8 col-sm-8 col-md-7 col-lg-7 col-xl-7">
+                                            <p>Название</p>
+                                            <hr>
+                                            <p>Адрес</p>
+                                            <hr>
+                                            <p>Рейтинг: <span style="font-size:20px">3.0</span>/5</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <div class="container rounded-bd places">
+                                <!-- Ссылка на место -->
+                                <a href="#" class="text-decoration-none">
+                                    <div class="row" style="align-items: center;">
+                                        <div class="col-xs-4 col-sm-4 col-md-5 col-lg-5 col-xl-5">
+                                            <img class="img rounded" src="{% static 'img/place.jpg' %}">
+                                        </div>
+                                        <div class="col-xs-8 col-sm-8 col-md-7 col-lg-7 col-xl-7">
+                                            <p>Название</p>
+                                            <hr>
+                                            <p>Адрес</p>
+                                            <hr>
+                                            <p>Рейтинг: <span style="font-size:20px">2.2</span>/5</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <script src="{% static 'js/scripts.js' %}"></script>
+    </footer>
+</body>
+</html>

@@ -14,4 +14,3 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns.append(path('static/<path:path>', never_cache(serve)))
-
