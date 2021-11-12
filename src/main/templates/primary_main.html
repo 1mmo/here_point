@@ -40,22 +40,31 @@
     <!-- Шапка -->
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand" style="margin: 8px;" href="#" id="logo">HerePoint</a>
+		<a class="navbar-brand" style="margin: 8px;" href="{% url 'main:index' %}" id="logo">HerePoint</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto" style="align-items: center">
+		    {% if user.is_authenticated %}
+		    <li class="nav-item active">
+                            <a href="{% url 'users:login' %}" class="nav-link">Добавить место</a>
+                    </li>
+		    <li class="nav-item active">
+			<img onclick="document.location='{% url 'users:profile' %}'" class="nav-link" src="{% static 'img/me2.jpg' %}" width="47" height="47" alt="" style="border-radius: 50%;" id="usericon">
+		    </li>
+		    {% else %}
                     <li class="nav-item active">
-                        <a href="#" class="nav-link">Войти</a>
+			    <a href="{% url 'users:login' %}" class="nav-link">Войти</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="#" class="nav-link">Регистрация</a>
+			    <a href="{% url 'users:register' %}" class="nav-link">Регистрация</a>
                     </li>
                     <li class="nav-item active">
                         <a href="#" class="nav-link text-center">Добавить место</a>
                     </li>
+		    {% endif %}
                 </ul>
             </div>
         </div>
