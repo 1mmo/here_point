@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
     'bootstrap5',
+    'easy_thumbnails',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 
@@ -99,6 +101,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Creating miniatures
+
+THUMBNAIL_ALIASES = {
+        '': {
+            'default': {
+                'size': (96, 96), # Scaling of miniatures from 96px to 96px
+                'crop': 'scale',
+            },
+        },
+}
+
+THUMBNAIL_BASEDIR = "thumbnails"
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -121,7 +136,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
