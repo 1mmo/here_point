@@ -3,6 +3,7 @@ from django.db import models
 from .utilities import get_timestamp_path
 from users.models import AdvUser
 
+
 class Place(models.Model):
     """ Model of place """
     category = models.ForeignKey("Category", on_delete=models.PROTECT, 
@@ -13,7 +14,8 @@ class Place(models.Model):
     image = models.ImageField(upload_to=get_timestamp_path,
                               verbose_name='Изображение')
     author = models.ForeignKey(AdvUser, on_delete=models.CASCADE,
-                              verbose_name='Автор места'),
+                               null=True, blank=False, 
+                               verbose_name='Автор места')
     city = models.ForeignKey("City", on_delete=models.PROTECT,
                              verbose_name="Город")
     is_active = models.BooleanField(default=True, db_index=True,
@@ -76,3 +78,10 @@ class Category(models.Model):
         ordering = ('order', 'title')
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
+
+
+class AdvUser(AdvUser):
+    def delete(self, *args, **kwargs):
+        for p in self .place_set.all():
+            p.delete()
+        super().delete(*args, **kwargs)
