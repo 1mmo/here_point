@@ -11,6 +11,10 @@ class AdvUser(AbstractUser):
             default=True,
             verbose_name='Получать оповещения о новых местах?'
             )
+    
+    def __str__(self):
+        return self.username
+
 
     class Meta(AbstractUser.Meta):
         pass
