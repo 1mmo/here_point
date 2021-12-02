@@ -6,8 +6,7 @@ from users.models import AdvUser
 
 class Place(models.Model):
     """ Model of place """
-    category = models.ForeignKey("Category", on_delete=models.PROTECT, 
-                                 verbose_name="Категория")
+    categories = models.ManyToManyField("Category")
     title = models.CharField(max_length=32, verbose_name='Место')
     description = models.TextField(verbose_name="Описание")
     address = models.CharField(max_length=64, verbose_name='Адрес')
@@ -22,7 +21,10 @@ class Place(models.Model):
                                   verbose_name='Выводить в списке?')
     created_at = models.DateTimeField(auto_now_add=True, db_index=True,
                                       verbose_name='Опубликовано')
-    
+
+    def _categories(self):
+        return ", ".join([category.title for category in self.categories.all()])
+
     def delete(self, *args, **kwargs):
         """ Deleting additional images after removing place """
         for ai in self.additionalimage_set.all():
@@ -82,6 +84,6 @@ class Category(models.Model):
 
 class AdvUser(AdvUser):
     def delete(self, *args, **kwargs):
-        for p in self .place_set.all():
+        for p in self.place_set.all():
             p.delete()
         super().delete(*args, **kwargs)
