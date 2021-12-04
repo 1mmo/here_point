@@ -28,5 +28,11 @@ def by_category(request, pk):
                "places": page.object_list, "form": form}
     return render(request, 'by_category.html', context)
 
+def detail(request, category_pk, pk):
+    place = get_object_or_404(Place, pk=pk)
+    ais = place.additionalimage_set.all()
+    context = {'place': place, 'ais': ais}
+    return render(request, 'detail.html', context)
+
 def index(request):
     return render(request, 'primary_main.html')
