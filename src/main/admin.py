@@ -18,7 +18,7 @@ class AdditionalImageInline(admin.TabularInline):
 class PlaceAdmin(admin.ModelAdmin):
     list_display = ('city', '_categories', 'title', 'description', 
                     'address', 'author', 'created_at')
-    fields = (('city', 'category'), 'author', 'title', 'description',
+    fields = (('city', 'categories'), 'author', 'title', 'description',
               'address', 'image', 'is_active')
     inlines = (AdditionalImageInline,)
 

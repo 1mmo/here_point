@@ -13,12 +13,12 @@ def by_category(request, pk):
     places = Place.objects.filter(is_active=True, categories=pk)
     if 'keyword' in request.GET:
         keyword = request.GET['keyword']
-        q = Q(title__icontains=keyword) | Q(content__incontains=keyword)
+        q = Q(title__icontains=keyword) | Q(description__icontains=keyword)
         places = places.filter(q)
     else:
         keyword = ''
     form = SearchForm(initial={'keyword': keyword})
-    paginator = Paginator(places, 2)
+    paginator = Paginator(places, 10)
     if 'page' in request.GET:
         page_num = request.GET['page']
     else:
