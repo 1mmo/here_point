@@ -27,3 +27,6 @@ def by_category(request, pk):
     context = {"category": category, "page": page, 
                "places": page.object_list, "form": form}
     return render(request, 'by_category.html', context)
+
+def index(request):
+    return render(request, 'primary_main.html')
