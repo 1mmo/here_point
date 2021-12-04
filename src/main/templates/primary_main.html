@@ -98,16 +98,10 @@
                                     <!-- Категория -->
                                     <label for="select">Категория</label>
                                     <select class="form-control" name="city" id="city" style="font-size: 14px;">
-                                        <option>-не выбрано-</option>
-                                        <option>Кафе</option>
-                                        <option>Отдых</option>
-                                        <option>Парки</option>
-                                        <option>Спорт</option>
-                                        <option>Бары</option>
-                                        <option>Музеи</option>
-                                        <option>Театры</option>
-                                        <option>Кинотеатры</option>
-                                        <option>Магазины</option>
+					<option>-не выбрано-</option>
+					{% for category in categories %}
+					<option><a href={% url 'main:by_category' pk=category.pk %}>{{ category.title }}</a>
+					{% endfor %}
                                     </select>
                                     <!-- Сортировать по -->
                                     <label for="select">Сортировать</label>
@@ -118,6 +112,9 @@
                                     </select>
                                 </div>
                             </form>
+			    {% for category in categories %}
+			    <a href={% url 'main:by_category' pk=category.pk %}>{{ category.title }}</a>
+			    {% endfor %}
                         </div>
                     </div>
                 </div>
