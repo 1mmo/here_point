@@ -5,6 +5,10 @@
 	height: 100px;
 */
 
+#link-title {
+	text-decoration: none;
+}
+
 #form-search {
 	/*width: auto;*/
 	float: right;
