@@ -36,4 +36,6 @@ def detail(request, category_pk, pk):
     return render(request, 'detail.html', context)
 
 def index(request):
-    return render(request, 'primary_main.html')
+    places = Place.objects.filter(is_active=True)[:10]
+    context = {'places': places}
+    return render(request, 'primary_main.html', context)
