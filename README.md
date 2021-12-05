@@ -26,8 +26,12 @@
 # Start Docker
   
     # docker-compose up -d --build
-    
 
+# Migrations
+    
+    # docker-compose exec web python manage.py createmigrate
+    # docker-compose exec web python manage.py migrate
+    
 # Note
 
     # To launch the site next time:
