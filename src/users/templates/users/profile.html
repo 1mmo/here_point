@@ -1,4 +1,6 @@
 {% load static %}
+{% load thumbnail %}
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -29,6 +31,15 @@
   		left: 0;
   		z-index: 1;
 	}
+
+	#user-place {
+		transition: transform .1s linear;
+	}
+
+	#user-place:hover {
+		transform: translateY(-5px);
+	}
+
     </style>
 
 </head>
@@ -70,12 +81,6 @@
 			<input type="text" readonly class="form-control-plaintext fs-3" id="Email" value="{{ user.email }}">
                 </div>
             </div>
-            <div class="row">
-                <label for="Password" class="col-sm-4 col-form-label fs-3">Password:</label>
-                <div class="col-sm-8">
-			<input type="password" class="form-control-plaintext fs-3" id="Password" value="{{ user.password }}">
-                </div>
-            </div>
 	    <div class="row">
 		<label for="Username" class="col-sm-4 col-form-label fs-3">Username:</label>
 		<div class="col-sm-8">
@@ -94,35 +99,32 @@
 			<input type="text" readonly class="form-control-plaintext fs-3" id="Surname" value="{{ user.last_name }}">
                 </div>
             </div>
+	    <!-- ГОРОД
             <div class="row">
                 <label for="City" class="col-sm-4 col-form-label fs-3">City:</label>
                 <div class="col-sm-8">
                     <input type="text" readonly class="form-control-plaintext fs-3" id="City" value="City">
                 </div>
             </div>
+	    -->
         </div>
+	{% if places %}
         <div class="col-4">
+	    {% for place in places %}
+	    {% with category=place.categories.all %}
+            {% for c in category %}
             <div class="row">
-                <a class="link-dark" href="#">
-                    <span class="fs-3 ">Место #1</span>
-                </a>
+		    {% url 'main:detail' category_pk=c.pk pk=place.pk as url %}
+		    <p>{{ place.title }}</p>
+                    <a href="{{ url }}{{ all }}">
+                    	<img id="user-place" class="img rounded" src="{% thumbnail place.image "200x200" %}">
+                    </a>
             </div>
-            <div class="row">
-                <a class="link-dark" href="#">
-                    <span class="fs-3 ">Место #2</span>
-                </a>
-            </div>
-            <div class="row">
-                <a class="link-dark" href="#">
-                    <span class="fs-3 ">Место #3</span>
-                </a>
-            </div>
-            <div class="row">
-                <a class="link-dark" href="#">
-                    <span class="fs-3 ">Место #4</span>
-                </a>
-            </div>
+	    {% endfor %}
+            {% endwith %}
+	    {% endfor %}
         </div>
+	{% endif %}
     </div>
     <footer>
         <div class="row" style="margin-top:250px">
