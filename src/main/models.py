@@ -6,7 +6,7 @@ from users.models import AdvUser
 
 class Place(models.Model):
     """ Model of place """
-    categories = models.ManyToManyField("Category")
+    categories = models.ManyToManyField("Category", verbose_name='Категория')
     title = models.CharField(max_length=32, verbose_name='Место')
     description = models.TextField(verbose_name="Описание")
     address = models.CharField(max_length=64, verbose_name='Адрес')

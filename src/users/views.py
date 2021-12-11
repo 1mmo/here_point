@@ -11,8 +11,7 @@ from django.views.generic.base import TemplateView
 
 from .models import AdvUser
 from main.models import Place
-from main.forms import PlaceForm, AIFormSet
-from .forms import ChangeUserInfoForm, RegisterUserForm
+from .forms import ChangeUserInfoForm, RegisterUserForm, PlaceForm, AIFormSet
 
 
 @login_required

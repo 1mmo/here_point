@@ -1,0 +1,244 @@
+{% load static %}
+{% load bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat:wght@100&display=swap');
+
+        #usericon {
+        }
+
+        #logo {
+            text-decoration: none;
+            color: #2b2a2c;
+            font-size: 30px;
+            padding: 0px 0px 0px 25px;
+            font-family: 'Cinzel', serif;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            position: relative;
+        }
+
+
+        #logo:after {
+		content: "";
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: #2B2A2C;
+                bottom: -5;
+                left: 0;
+                z-index: 1;
+            }
+    </style>
+ 
+</head>
+<body background="{% static 'images/background.jpg' %}" style=" overflow-x: hidden; background-size: cover; background-repeat: no-repeat; background-position: center center; background-attachment: fixed ">
+    <!-- Шапка -->
+    <!-- Версия с выполненным входом в аккаунт -->
+    <nav class="navbar navbar-expand-md navbar-light">
+        <div class="container-fluid">
+        	<a class="float-start mt-2" style="margin: 8px;" href="#" id="logo">HerePoint</a>
+            	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+                	<span class="navbar-toggler-icon"></span>
+            	</button>
+            	<div class="collapse navbar-collapse justify-content-end me-3" id="navbarResponsive">
+                	<ul class="navbar-nav ml-auto" style="align-items: center">
+                    		<li class="nav-item">
+                        		<a href="#" class="nav-link text-center active">Добавить<br> свое место</a>
+                    		</li>
+                    		<li class="nav-item">
+                        		<a href="#" class="nav-img active">
+						<img class="avatar rounded-circle" src="{% static 'images/me2.jpg' %}">
+    					</a>
+    		    		</li>
+    			</ul>
+    	   	</div>
+    	</div>
+    </nav>
+    <hr class="mt-0" style="opacity: 0.2" > 
+    <div class="container-fluid">
+        <div class="row mt-5">
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-7 " style="padding-left:8%">
+
+                <div class="row mt-5">
+
+                    <div class="col">
+                        <span class="fs-2 "><strong>Добавление нового места</strong></span>
+                    </div>
+                </div>
+                <div class="row mt-3" style="height: auto;">
+                    <div class="col">
+                    <div class="row">
+		    <!--
+                        <label for="select" id="cate" class="col-sm-3 col-form-label fs-3">Категории:</label>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-4">
+                                    <select class="form-control fs-3" id="select" style="font-size: 14px;">
+                                        <option selected>-не выбрано-</option>
+                                        <option value="1">Кафе</option>
+                                        <option value="2">Отдых</option>
+                                        <option value="3">Парки</option>
+                                        <option value="4">Спорт</option>
+                                        <option value="5">Бары</option>
+                                        <option value="6">Музеи</option>
+                                        <option value="7">Театры</option>
+                                        <option value="8">Кинотеатры</option>
+                                        <option value="9">Магазины</option>
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <select class="form-control fs-3" id="select" style="font-size: 14px;">
+                                        <option selected>-не выбрано-</option>
+                                        <option value="1">Кафе</option>
+                                        <option value="2">Отдых</option>
+                                        <option value="3">Парки</option>
+                                        <option value="4">Спорт</option>
+                                        <option value="5">Бары</option>
+                                        <option value="6">Музеи</option>
+                                        <option value="7">Театры</option>
+                                        <option value="8">Кинотеатры</option>
+                                        <option value="9">Магазины</option>
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <select class="form-control fs-3" id="select" style="font-size: 14px;">
+                                        <option selected>-не выбрано-</option>
+                                        <option value="1">Кафе</option>
+                                        <option value="2">Отдых</option>
+                                        <option value="3">Парки</option>
+                                        <option value="4">Спорт</option>
+                                        <option value="5">Бары</option>
+                                        <option value="6">Музеи</option>
+                                        <option value="7">Театры</option>
+                                        <option value="8">Кинотеатры</option>
+                                        <option value="9">Магазины</option>
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <select class="form-control fs-3" id="select" style="font-size: 14px;">
+                                        <option selected>-не выбрано-</option>
+                                        <option value="1">Кафе</option>
+                                        <option value="2">Отдых</option>
+                                        <option value="3">Парки</option>
+                                        <option value="4">Спорт</option>
+                                        <option value="5">Бары</option>
+                                        <option value="6">Музеи</option>
+                                        <option value="7">Театры</option>
+                                        <option value="8">Кинотеатры</option>
+                                        <option value="9">Магазины</option>
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <select class="form-control fs-3" id="select" style="font-size: 14px;">
+                                        <option selected>-не выбрано-</option>
+                                        <option value="1">Кафе</option>
+                                        <option value="2">Отдых</option>
+                                        <option value="3">Парки</option>
+                                        <option value="4">Спорт</option>
+                                        <option value="5">Бары</option>
+                                        <option value="6">Музеи</option>
+                                        <option value="7">Театры</option>
+                                        <option value="8">Кинотеатры</option>
+                                        <option value="9">Магазины</option>
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <select class="form-control fs-3" id="select" style="font-size: 14px;">
+                                        <option selected>-не выбрано-</option>
+                                        <option value="1">Кафе</option>
+                                        <option value="2">Отдых</option>
+                                        <option value="3">Парки</option>
+                                        <option value="4">Спорт</option>
+                                        <option value="5">Бары</option>
+                                        <option value="6">Музеи</option>
+                                        <option value="7">Театры</option>
+                                        <option value="8">Кинотеатры</option>
+                                        <option value="9">Магазины</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+		    -->
+
+                    
+			<!--		
+                        <div class="row">
+                            <label for="Author" class="col-sm-3 col-form-label fs-3">Автор:</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control fs-3" id="Author" cols="30" rows="1" style="resize: none; border: none; background-color: #ffffff; " value="{{ place.author }}" placeholder="Тут могли быть вы"></textarea>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label for="Title" class="col-sm-3 col-form-label fs-3">Название: </label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control fs-3" id="Title" cols="30" rows="1" style="resize: none; border: none; background-color: #ffffff; " value="{{ place.title }}" placeholder="Тут могло быть ваше название"></textarea>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label for="Address" class="col-sm-3 col-form-label fs-3">Адрес:</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control fs-3" id="Address" cols="30" rows="2" style="resize: none; border: none; background-color: #ffffff; " value="{{ place.address }}" placeholder="Тут мог быть ваш адрес"></textarea>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label for="Description" class="col-sm-3 col-form-label fs-3">Описание:</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control fs-3" id="Description" cols="30" rows="10" style="resize: none; border: none; background-color: #ffffff; " value="{{ place.description }}" placeholder="Тут могло быть ваше описание"></textarea>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row mt-4 justify-content-end">
+                    <button onclick="document.location='{% url 'users:profile_change' %}'" class="btn btn-outline-secondary btn-lg " style="width: 29%; min-width: 170px">Отправить заявку</button>
+                </div>
+
+		-->
+
+		<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			{% bootstrap_form form layout="horizontal" %}
+			{% bootstrap_formset formset layout="horizontal" %}
+			{% buttons submit='Добавить' %}{% endbuttons %}
+		</form>
+            </div>
+		
+	    <!--
+            <div class="col-xs-9 col-sm-8 col-md-7 col-lg-6 col-xl-5 ">
+
+                <div class="row mt-5 ">
+                    <span class="fs-2 "><strong>Фото</strong></span>
+
+                    <div class="row ">
+                        <input type="file" class="form-control-file" id="photo">
+                    </div>
+
+                </div>
+	    </div> -->
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+</body>
+</html>
