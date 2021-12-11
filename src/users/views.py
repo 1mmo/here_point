@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -9,9 +9,27 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
 
-
 from .models import AdvUser
-from .forms import ChangeUserInfoForm, RegisterUserForm
+from main.models import Place
+from .forms import ChangeUserInfoForm, RegisterUserForm, PlaceForm, AIFormSet
+
+
+@login_required
+def profile_place_add(request):
+    if request.method == "POST":
+        form = PlaceForm(request.POST, request.FILES)
+        if form.is_valid():
+            place = form.save()
+            formset = AIFormSet(request.POST, request.FILES, instance=place)
+            if formset.is_valid():
+                formset.save()
+                messages.add_message(request, messages.SUCCESS, 'Место добавлено')
+                return redirect('users:profile')
+    else:
+        form = PlaceForm(initial={'author': request.user.pk})
+        formset = AIFormSet()
+    context = {'form': form, 'formset': formset}
+    return render(request, 'users/add_place.html', context)
 
 
 class ChangeUserInfoView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
@@ -89,4 +107,6 @@ class HerePointLoginView(LoginView):
 # login_required checking users for registration
 def profile(request):
     """ Controller-class that display the user profile page """
-    return render(request, 'users/profile.html')
+    places = Place.objects.filter(author=request.user.pk)
+    context = {'places': places}
+    return render(request, 'users/profile.html', context)
