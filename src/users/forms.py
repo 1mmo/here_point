@@ -1,9 +1,20 @@
 from django import forms
+from django.forms import inlineformset_factory
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
 
 
 from .models import AdvUser
+from main.models import Place, AdditionalImage
+
+
+class PlaceForm(forms.ModelForm):
+    class Meta:
+        model = Place
+        fields = '__all__'
+        widgets = {'author': forms.HiddenInput}
+
+AIFormSet = inlineformset_factory(Place, AdditionalImage, fields='__all__')
 
 
 class ChangeUserInfoForm(forms.ModelForm):

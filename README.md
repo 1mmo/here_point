@@ -28,7 +28,7 @@
     # docker-compose up -d --build
 
 # Migrations
-  
+
     # docker-compose exec web python manage.py migrate
     
 # Note
