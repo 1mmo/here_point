@@ -32,7 +32,7 @@ def detail(request, category_pk, pk):
     place = get_object_or_404(Place, pk=pk)
     ais = place.additionalimage_set.all()
     category = place.categories.all()
-    context = {'place': place, 'ais': ais, 'category': category}
+    context = {'place': place, 'ais': ais, 'category': category,}
     return render(request, 'detail.html', context)
 
 def index(request):
