@@ -3,8 +3,8 @@ from django.contrib.auth.views import LoginView
 from django.core.paginator import Paginator
 from django.db.models import Q
 
-from .models import Category, Place
-from .forms import SearchForm
+from .models import Category, Place, Comment
+from .forms import SearchForm, UserCommentForm, GuestCommentForm
 
 
 def by_category(request, pk):
@@ -29,10 +29,29 @@ def by_category(request, pk):
     return render(request, 'by_category.html', context)
 
 def detail(request, category_pk, pk):
+    """ Displaying information about place """
     place = get_object_or_404(Place, pk=pk)
     ais = place.additionalimage_set.all()
+    comments = Comment.objects.filter(place=pk, is_active=True)
+    initial = {'place': place.pk}
+    if request.user.is_authenticated:
+        initial['author'] = request.user.username
+        form_class = UserCommentForm
+    else:
+        form_class = GuestCommentForm
+    form = form_class(initial=initial)
+    if request.method == "POST":
+        c_form = form_class(request.POST)
+        if c_form.is_valid():
+            c_form.save()
+        else:
+            form = c_form
     category = place.categories.all()
-    context = {'place': place, 'ais': ais, 'category': category,}
+    context = {'place': place, 'ais': ais, 'category': category,
+               'comments': comments, 'form': form}
+    #if request.user.username:
+    #    author = request.user.username
+    #    context['author'] = author
     return render(request, 'detail.html', context)
 
 def index(request):

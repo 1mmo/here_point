@@ -4,6 +4,23 @@ from .utilities import get_timestamp_path
 from users.models import AdvUser
 
 
+class Comment(models.Model):
+    """ Model of comment """
+    place = models.ForeignKey("Place", on_delete=models.CASCADE, 
+                              verbose_name='Место')
+    author = models.CharField(max_length=30, default='Гость', verbose_name='Автор')
+    content = models.TextField(verbose_name='Содержание')
+    is_active = models.BooleanField(default=True, db_index=True,
+                                    verbose_name='Выводить на экран?')
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True,
+                                      verbose_name='Опубликовано')
+
+    class Meta:
+        verbose_name_plural = 'Комментарии'
+        verbose_name = 'Комментарий'
+        ordering = ['created_at']
+
+
 class Place(models.Model):
     """ Model of place """
     categories = models.ManyToManyField("Category", verbose_name='Категория')
@@ -31,6 +48,9 @@ class Place(models.Model):
             ai.delete()
         super().delete(*args, **kwargs)
 
+    def __str__(self):
+        return self.title
+    
 
     class Meta:
         verbose_name_plural = 'Места'

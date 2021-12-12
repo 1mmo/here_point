@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'easy_thumbnails',
     'django_cleanup.apps.CleanupConfig',
+    'captcha',
 ]
 
 
