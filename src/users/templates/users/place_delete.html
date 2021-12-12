@@ -70,7 +70,7 @@
     <div class="row mt-5">
         <div class="col-1"></div>
         <div class="col-7">
-		<span class="fs-2 "><strong>Правка личых данных</strong></span>
+		<span class="fs-2 "><strong>Удаление "{{ place.title }}"</strong></span>
         </div>
     </div>
     <form method='post'>
@@ -87,9 +87,13 @@
 		{% csrf_token %}
 		<div class="col-5">
 			<div class="row">
-				<h2 id="delete_question">Вы уверены, что хотите удалить аккаунт?</h2>
+				<h2 id="delete_question">Вы уверены, что хотите удалить место?</h2>
 				<input type="submit" class="btn btn-outline-secondary mt-4 btn-lg" id="delete" value="Удалить">
-				<button onclick="document.location='{% url 'users:profile_change' %}'" type="button" class="btn btn-outline-secondary mt-4 btn-lg" id="cancel">Отмена</button>
+				{% with categories=place.categories.all %}
+				{% for category in categories %}
+				<button onclick="document.location='{% url 'main:detail' category_pk=category.pk pk=place.pk %}'" type="button" class="btn btn-outline-secondary mt-4 btn-lg" id="cancel">Отмена</button>
+				{% endfor %}
+				{% endwith %}
 			</div>
 		</div>
 	</form>

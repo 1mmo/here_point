@@ -15,6 +15,34 @@ from .forms import ChangeUserInfoForm, RegisterUserForm, PlaceForm, AIFormSet
 
 
 @login_required
+def profile_place_change(request, pk):
+    place = get_object_or_404(Place, pk=pk)
+    if request.method == "POST":
+        form = PlaceForm(request.POST, request.FILES, instance=place)
+        if form.is_valid():
+            place = form.save()
+            formset = AIFormSet(request.POST, request.FILES, instance=place)
+            if formset.is_valid():
+                formset.save()
+                messages.add_message(request, messages.SUCCESS, 'Объявление исправлено')
+                return redirect('users:profile')
+    else:
+        form = PlaceForm(instance=place)
+        formset = AIFormSet(instance=place)
+    context = {'form': form, 'formset': formset}
+    return render(request, 'users/place_change.html', context)
+
+@login_required
+def profile_place_delete(request, pk):
+    place = get_object_or_404(Place, pk=pk)
+    if request.method == "POST":
+        place.delete()
+        return redirect('users:profile')
+    else:
+        context = {'place': place}
+        return render(request, 'users/place_delete.html', context)
+
+@login_required
 def profile_place_add(request):
     if request.method == "POST":
         form = PlaceForm(request.POST, request.FILES)

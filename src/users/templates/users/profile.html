@@ -51,7 +51,7 @@
 	<!--<button class="btn btn-outline-secondary float-end me-5 mt-5 btn-lg">Профиль</button> -->
 	<img onclick="document.location='{% url 'users:profile' %}'" class="float-end me-5 mt-5" src="{% static 'images/me2.jpg' %}" width="47" height="47" alt="" style="border-radius: 50%;" id="usericon">
 	<!-- <button onclick="document.location='{% url 'users:register' %}'" class="btn btn-outline-secondary float-end me-5 mt-5 btn-lg ">Регистрация</button> -->
-        <button class="btn btn-outline-secondary float-end me-5 mt-5 btn-lg ">Добавить своё место</button>
+	<button onclick="document.location='{% url 'users:place_add' %}'" class="btn btn-outline-secondary float-end me-5 mt-5 btn-lg ">Добавить своё место</button>
 	<a class="float-start me-5 mt-5" style="margin: 8px;" href="{% url 'main:index' %}" id="logo">HerePoint</a>
     </nav>
     <div class="row mt-5"></div>
