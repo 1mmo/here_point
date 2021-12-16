@@ -46,13 +46,16 @@ def detail(request, category_pk, pk):
             c_form.save()
         else:
             form = c_form
+    numbers = []
+    for number in range(len(ais)):
+        numbers.append(number)
     category = place.categories.all()
     context = {'place': place, 'ais': ais, 'category': category,
-               'comments': comments, 'form': form}
+               'comments': comments, 'form': form, 'numbers': numbers}
     #if request.user.username:
     #    author = request.user.username
     #    context['author'] = author
-    return render(request, 'detail.html', context)
+    return render(request, 'place_info.html', context)
 
 def index(request):
     places = Place.objects.filter(is_active=True)[:10]
