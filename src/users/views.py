@@ -17,20 +17,23 @@ from .forms import ChangeUserInfoForm, RegisterUserForm, PlaceForm, AIFormSet
 @login_required
 def profile_place_change(request, pk):
     place = get_object_or_404(Place, pk=pk)
-    if request.method == "POST":
-        form = PlaceForm(request.POST, request.FILES, instance=place)
-        if form.is_valid():
-            place = form.save()
-            formset = AIFormSet(request.POST, request.FILES, instance=place)
-            if formset.is_valid():
-                formset.save()
-                messages.add_message(request, messages.SUCCESS, 'Объявление исправлено')
-                return redirect('users:profile')
-    else:
-        form = PlaceForm(instance=place)
-        formset = AIFormSet(instance=place)
-    context = {'form': form, 'formset': formset}
-    return render(request, 'users/place_change.html', context)
+    author = place.author
+    if request.user.is_authenticated:
+        if request.user.username == author.username:
+            if request.method == "POST":
+                form = PlaceForm(request.POST, request.FILES, instance=place)
+                if form.is_valid():
+                    place = form.save()
+                    formset = AIFormSet(request.POST, request.FILES, instance=place)
+                    if formset.is_valid():
+                        formset.save()
+                        messages.add_message(request, messages.SUCCESS, 'Объявление исправлено')
+                        return redirect('users:profile')
+            else:
+                form = PlaceForm(instance=place)
+                formset = AIFormSet(instance=place)
+            context = {'form': form, 'formset': formset}
+            return render(request, 'users/place_change.html', context)
 
 @login_required
 def profile_place_delete(request, pk):

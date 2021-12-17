@@ -34,9 +34,12 @@ def detail(request, category_pk, pk):
     ais = place.additionalimage_set.all()
     comments = Comment.objects.filter(place=pk, is_active=True)
     initial = {'place': place.pk}
+    username = None
+    author = place.author
     if request.user.is_authenticated:
         initial['author'] = request.user.username
         form_class = UserCommentForm
+        username = request.user.username
     else:
         form_class = GuestCommentForm
     form = form_class(initial=initial)
@@ -51,7 +54,8 @@ def detail(request, category_pk, pk):
         numbers.append(number)
     category = place.categories.all()
     context = {'place': place, 'ais': ais, 'category': category,
-               'comments': comments, 'form': form, 'numbers': numbers}
+               'comments': comments, 'form': form, 'numbers': numbers,
+               'username': username, 'author': author}
     #if request.user.username:
     #    author = request.user.username
     #    context['author'] = author
