@@ -3,18 +3,15 @@
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="main.css" type="text/css"/>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/user.css' %}">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat:wght@100&display=swap');
-
-        #usericon {
-        }
 
         #logo {
             text-decoration: none;
@@ -27,9 +24,8 @@
             position: relative;
         }
 
-
-        #logo:after {
-		content: "";
+            #logo:after {
+                content: "";
                 display: block;
                 width: 100%;
                 height: 2px;
@@ -39,32 +35,62 @@
                 z-index: 1;
             }
     </style>
- 
+
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body background="{% static 'images/background.jpg' %}" style=" overflow-x: hidden; background-size: cover; background-repeat: no-repeat; background-position: center center; background-attachment: fixed ">
     <!-- Шапка -->
     <!-- Версия с выполненным входом в аккаунт -->
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container-fluid">
-        	<a class="float-start mt-2" style="margin: 8px;" href="#" id="logo">HerePoint</a>
-            	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
-                	<span class="navbar-toggler-icon"></span>
-            	</button>
-            	<div class="collapse navbar-collapse justify-content-end me-3" id="navbarResponsive">
-                	<ul class="navbar-nav ml-auto" style="align-items: center">
-                    		<li class="nav-item">
-                        		<a href="#" class="nav-link text-center active">Добавить<br> свое место</a>
-                    		</li>
-                    		<li class="nav-item">
-                        		<a href="#" class="nav-img active">
-						<img class="avatar rounded-circle" src="{% static 'images/me2.jpg' %}">
-    					</a>
-    		    		</li>
-    			</ul>
-    	   	</div>
-    	</div>
+            <a class="float-start mt-2" style="margin: 8px;" href = "{% url 'main:index' %}" id="logo">HerePoint</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end me-3" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto" style="align-items: center">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-center active">Добавить<br> свое место</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-img active">
+
+    <img class="avatar rounded-circle" src="oblaka.jpg">
+    </a>
+    </li>
+    </ul>
+    </div>
+    </div>
     </nav>
     <hr class="mt-0" style="opacity: 0.2" > 
+    <!-- Версия с кнопками регистрации и входа -->
+   <!-- <nav class="navbar navbar-expand-md navbar-light">
+        <div class="container-fluid">
+            <a class="float-start mt-2" style="margin: 8px;" href="#" id="logo">HerePoint</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end me-3" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto" style="align-items: center">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">Войти</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">Регистрация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-center active">Добавить<br> свое место</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <hr class="mt-0" style="opacity: 0.2">   -->
+
     <div class="container-fluid">
         <div class="row mt-5">
 
@@ -73,14 +99,13 @@
                 <div class="row mt-5">
 
                     <div class="col">
-                        <span class="fs-2 "><strong>Добавление нового места</strong></span>
+                        <span class="fs-2 "><strong>Данные места</strong></span>
                     </div>
                 </div>
                 <div class="row mt-3" style="height: auto;">
                     <div class="col">
                     <div class="row">
-		    <!--
-                        <label for="select" id="cate" class="col-sm-3 col-form-label fs-3">Категории:</label>
+                        <label for="select" class="col-sm-3 col-form-label fs-3">Категории:</label>
                         <div class="col-sm-9">
                             <div class="row">
                                 <div class="col-4">
@@ -171,11 +196,10 @@
                             </div>
                         </div>
 
-                    </div>
-		    -->
 
+                    </div>
                     
-			<!--		
+
                         <div class="row">
                             <label for="Author" class="col-sm-3 col-form-label fs-3">Автор:</label>
                             <div class="col-sm-9">
@@ -214,17 +238,8 @@
                     <button onclick="document.location='{% url 'users:profile_change' %}'" class="btn btn-outline-secondary btn-lg " style="width: 29%; min-width: 170px">Отправить заявку</button>
                 </div>
 
-		-->
-
-		<form method="post" enctype="multipart/form-data">
-			{% csrf_token %}
-			{% bootstrap_form form layout="horizontal" %}
-			{% bootstrap_formset formset layout="horizontal" %}
-			{% buttons submit='Добавить' %}{% endbuttons %}
-		</form>
             </div>
-		
-	    <!--
+
             <div class="col-xs-9 col-sm-8 col-md-7 col-lg-6 col-xl-5 ">
 
                 <div class="row mt-5 ">
@@ -235,7 +250,7 @@
                     </div>
 
                 </div>
-	    </div> -->
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
