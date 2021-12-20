@@ -99,36 +99,35 @@
                         <div class="container" style="padding: 10px;">
                             <form role="form" class="form-horizontal">
                                 <div class="form-group label">
-                                    <!-- Город -->
+                                    <!-- Город
                                     <label for="select">Город</label>
                                     <select class="form-control" name="city" id="city" style="font-size: 14px;">
                                         <option>-не выбрано-</option>
                                         <option>Нижний Новгород</option>
-                                    </select>
-                                    <!-- Район -->
+				    </select> -->
+                                    <!-- Район
                                     <label for="select">Район</label>
                                     <select class="form-control" name="city" id="city" style="font-size: 14px;">
                                         <option>-не выбрано-</option>
-                                    </select>
-                                    <!-- Категория -->
+				    </select> -->
+                                    <!-- Категория
                                     <label for="select">Категория</label>
                                     <select class="form-control" name="city" id="city" style="font-size: 14px;">
 					<option>-не выбрано-</option>
-					{% for category in categories %}
-					<option><a href={% url 'main:by_category' pk=category.pk %}>{{ category.title }}</a>
-					{% endfor %}
-                                    </select>
-                                    <!-- Сортировать по -->
+				    </select> -->
+                                    <!-- Сортировать по
                                     <label for="select">Сортировать</label>
                                     <select class="form-control" name="city" id="city" style="font-size: 14px;">
                                         <option>По рейтингу</option>
                                         <option>По названию</option>
                                         <option>По числу рекомендаций</option>
-                                    </select>
-                                </div>
-                            </form>
+				    </select> -->
+				</div>
+			    </form>
 			    {% for category in categories %}
-			    <a href={% url 'main:by_category' pk=category.pk %}>{{ category.title }}</a>
+			    <div class="filter">
+				    <a class="filter__link" href={% url 'main:by_category' pk=category.pk %}>{{ category.title }}</a>
+			    </div>
 			    {% endfor %}
                         </div>
                     </div>
