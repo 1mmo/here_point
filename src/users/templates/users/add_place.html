@@ -46,17 +46,17 @@
     <!-- Версия с выполненным входом в аккаунт -->
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container-fluid">
-        	<a class="float-start mt-2" style="margin: 8px;" href="#" id="logo">HerePoint</a>
+		<a class="float-start mt-2" style="margin: 8px;" href="{% url 'main:index' %}" id="logo">HerePoint</a>
             	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
                 	<span class="navbar-toggler-icon"></span>
             	</button>
             	<div class="collapse navbar-collapse justify-content-end me-3" id="navbarResponsive">
                 	<ul class="navbar-nav ml-auto" style="align-items: center">
                     		<li class="nav-item">
-                        		<a href="#" class="nav-link text-center active">Добавить<br> свое место</a>
+					<a href="{% url 'users:place_add' %}" class="nav-link text-center active">Добавить<br> свое место</a>
                     		</li>
                     		<li class="nav-item">
-                        		<a href="#" class="nav-img active">
+					<a href="{% url 'users:profile' %}" class="nav-img active">
 						<img class="avatar rounded-circle" src="{% static 'images/me2.jpg' %}">
     					</a>
     		    		</li>

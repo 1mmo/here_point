@@ -43,7 +43,7 @@
     </style>
 
 </head>
-<body background="{% static 'images/background.jpg' %}" style=" overflow: hidden;background-size: cover; background-repeat: no-repeat; background-position: center center; background-attachment: fixed ">
+<body background="{% static 'images/background.jpg' %}" style=" overflow-x: hidden;background-size: cover; background-repeat: no-repeat; background-position: center center; background-attachment: fixed ">
     <nav class="navbar-light">
         <a class="navbar-brand ms-5" href="#">
             <span class="fs-1"></span>
@@ -115,10 +115,12 @@
             {% for c in category %}
             <div class="row">
 		    {% url 'main:detail' category_pk=c.pk pk=place.pk as url %}
+			<div id="user-place" class="container">
 		    <p>{{ place.title }}</p>
                     <a href="{{ url }}{{ all }}">
                     	<img id="user-place" class="img rounded" src="{% thumbnail place.image "200x200" %}">
                     </a>
+					</div>
             </div>
 	    {% endfor %}
             {% endwith %}
