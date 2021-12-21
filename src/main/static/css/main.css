@@ -31,9 +31,9 @@ body, html {
 
 }*/
 
-/*.nav-link {
-    font-size: 20px;
-} */
+.nav-link {
+    font-size: 18px !important;
+}
 
 .logo-rounded-bd {
     border-top-left-radius: 110px;
@@ -161,7 +161,7 @@ body, html {
     /*transition: width .9s linear;*/
 }
 
-.navbar-brand img:hover {
+/* .navbar-brand img:hover {
     box-shadow: 0px 0px 5px rgb(12, 161, 45);
 
-}
+} */

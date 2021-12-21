@@ -40,16 +40,27 @@
     </style>
 
 </head>
-<body background="{% static 'images/background.jpg' %}" style=" overflow: hidden;background-size: cover; background-repeat: no-repeat; background-position: center center; background-attachment: fixed ">
-    <nav class="navbar-light ">
-        <a class="navbar-brand ms-5" href="#">
-            <span class="fs-1"></span>
-        </a>
-        <img onclick="document.location='{% url 'users:profile' %}'" class="float-end me-5 mt-5" src="{% static 'images/me2.jpg' %}" width="47" height="47" alt="" style="border-radius: 50%;" id="usericon">
-        <!-- <button onclick="document.location='{% url 'users:register' %}'" class="btn btn-outline-secondary float-end me-5 mt-5 btn-lg ">Регистрация</button> -->
-        <button class="btn btn-outline-secondary float-end me-5 mt-5 btn-lg ">Добавить своё место</button>
-	<a class="float-start me-5 mt-5" style="margin: 8px;" href="{% url 'main:index' %}" id="logo">HerePoint</a>
+<body background="{% static 'images/background.jpg' %}" style="background-size: cover; background-repeat: no-repeat; background-position: center center; background-attachment: fixed">
+    <!-- Шапка -->
+    <nav class="navbar navbar-expand-md navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="margin: 8px;" href="{% url 'main:index' %}" id="logo">HerePoint</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end me-3" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto" style="align-items: center">
+                    <li class="nav-item active">
+                        <a href="{% url 'users:login' %}" class="nav-link active text-center">Добавить место</a>
+                    </li>
+                    <li class="nav-item active">
+                        <img onclick="document.location='{% url 'users:profile' %}'" class="nav-link" src="{% static 'images/avatar_new.jpg' %}" width="60" height="60" alt="" style="border-radius: 50%;" id="usericon">
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
+    <hr class="mt-0" style="opacity: 0.2">
 
     <div class="row mt-5"></div>
     <div class="row mt-5">
@@ -64,7 +75,7 @@
         <div class="col-1" style="word-break: break-all;"></div>
         <div class="col-2">
             <div class="row">
-		    <img class="" src="{% static 'images/me2.jpg' %}" width="270" height="290" alt="" style="border-radius: 50%;">
+		    <img class="" src="{% static 'images/avatar_new.jpg' %}" width="290" height="290" alt="" style="border-radius: 50%;">
 		    <input type="submit" class="btn btn-outline-secondary mt-5 btn-lg" value='Сохранить'>
 		    <button onclick="document.location='{% url 'users:profile' %}'" type="button" class="btn btn-outline-secondary mt-3 btn-lg">Назад</button>
             </div>
