@@ -1,4 +1,4 @@
-# here_point 🌍📍
+# here_point
 
 
 # Install
